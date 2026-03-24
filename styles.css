@@ -209,9 +209,8 @@ body {
 
 .factor-option__meme {
   display: block;
-  width: 100%;
-  max-height: 120px;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
   border-radius: 4px;
   margin-top: 8px;
 }
