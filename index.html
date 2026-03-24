@@ -155,6 +155,7 @@ let sortDir = "desc";
 let _idCounter = 0;
 
 const STORAGE_KEY = "bugTriageData";
+const catModeEnabled = new URLSearchParams(window.location.search).has("catmode");
 
 function nextId() {
   return Date.now() + "_" + (++_idCounter) + "_" + Math.random().toString(36).slice(2, 7);
@@ -208,6 +209,13 @@ function buildFactorUI() {
   const container = document.getElementById("js-factors-container");
   container.innerHTML = "";
 
+  if (catModeEnabled) {
+    const banner = document.createElement("div");
+    banner.className = "catmode-banner";
+    banner.innerHTML = `🐱 Cat Mode is ON! Enjoy the memes!`;
+    container.appendChild(banner);
+  }
+
   BugTriageConfig.factors.forEach(factor => {
     const block = document.createElement("div");
     block.className = "factor-block";
@@ -248,6 +256,16 @@ function buildFactorUI() {
       nameDiv.appendChild(badge);
       textDiv.appendChild(nameDiv);
       textDiv.appendChild(descDiv);
+
+      if (catModeEnabled && opt.catMeme) {
+        const memeImg = document.createElement("img");
+        memeImg.className = "factor-option__meme";
+        memeImg.src = opt.catMeme;
+        memeImg.alt = `Cat meme for ${opt.label}`;
+        memeImg.loading = "lazy";
+        textDiv.appendChild(memeImg);
+      }
+
       label.appendChild(radio);
       label.appendChild(textDiv);
       optsEl.appendChild(label);
