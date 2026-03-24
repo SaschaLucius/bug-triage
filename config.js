@@ -32,9 +32,11 @@ const BugTriageConfig = {
    *   id      – unique key used internally (no spaces)
    *   label   – display name shown in the form
    *   description – short sentence explaining the factor
-   *   options – array of { value, label, description }
+   *   options – array of { value, label, description, catMeme? }
    *             listed from HIGHEST to LOWEST impact so the most critical
    *             option appears first in the UI.
+   *             catMeme (optional) – URL of a cat meme image shown when
+   *             ?catmode is present in the URL.
    */
   factors: [
     {
@@ -42,13 +44,13 @@ const BugTriageConfig = {
       label: "Type",
       description: "What type of bug is this?",
       options: [
-        { value: 7, label: "Crash",           description: "Bug causes crash or data loss. Asserts in the Debug release." },
-        { value: 6, label: "Major Usability", description: "Impairs usability in key scenarios." },
-        { value: 5, label: "Minor Usability", description: "Impairs usability in secondary scenarios." },
-        { value: 4, label: "Balancing",       description: "Enables degenerate usage strategies that harm the experience." },
-        { value: 3, label: "Polish",          description: "Visual and sound aesthetic issues." },
-        { value: 2, label: "Localization",    description: "A localization or internationalization issue." },
-        { value: 1, label: "Documentation",   description: "A documentation issue." }
+        { value: 7, label: "Crash",           description: "Bug causes crash or data loss. Asserts in the Debug release.", catMeme: "https://cataas.com/cat/says/OH%20NO!" },
+        { value: 6, label: "Major Usability", description: "Impairs usability in key scenarios.",                         catMeme: "https://cataas.com/cat/says/It's%20broken!" },
+        { value: 5, label: "Minor Usability", description: "Impairs usability in secondary scenarios.",                   catMeme: "https://cataas.com/cat/says/Kinda%20broken" },
+        { value: 4, label: "Balancing",       description: "Enables degenerate usage strategies that harm the experience.", catMeme: "https://cataas.com/cat/says/Something's%20off" },
+        { value: 3, label: "Polish",          description: "Visual and sound aesthetic issues.",                           catMeme: "https://cataas.com/cat/says/Needs%20more%20love" },
+        { value: 2, label: "Localization",    description: "A localization or internationalization issue.",                catMeme: "https://cataas.com/cat/says/Lost%20in%20translation" },
+        { value: 1, label: "Documentation",   description: "A documentation issue.",                                      catMeme: "https://cataas.com/cat/says/Where%20are%20the%20docs%3F" }
       ]
     },
     {
@@ -56,11 +58,11 @@ const BugTriageConfig = {
       label: "Likelihood",
       description: "Who will be affected by this bug?",
       options: [
-        { value: 5, label: "All users",     description: "Will affect all users." },
-        { value: 4, label: "Most users",    description: "Will affect most users." },
-        { value: 3, label: "Average",       description: "Will affect an average number of users." },
-        { value: 2, label: "Few users",     description: "Will only affect a few users." },
-        { value: 1, label: "Almost no one", description: "Will affect almost no one." }
+        { value: 5, label: "All users",     description: "Will affect all users.",                        catMeme: "https://cataas.com/cat/says/Everyone%20is%20affected!" },
+        { value: 4, label: "Most users",    description: "Will affect most users.",                       catMeme: "https://cataas.com/cat/says/Most%20are%20affected" },
+        { value: 3, label: "Average",       description: "Will affect an average number of users.",       catMeme: "https://cataas.com/cat/says/Some%20are%20affected" },
+        { value: 2, label: "Few users",     description: "Will only affect a few users.",                 catMeme: "https://cataas.com/cat/says/A%20few%20are%20affected" },
+        { value: 1, label: "Almost no one", description: "Will affect almost no one.",                    catMeme: "https://cataas.com/cat/says/Nobody%20cares" }
       ]
     },
     {
@@ -68,11 +70,11 @@ const BugTriageConfig = {
       label: "Priority",
       description: "How will those affected feel about the bug?",
       options: [
-        { value: 5, label: "Blocking",  description: "Blocking further progress on the daily build." },
-        { value: 4, label: "Critical",  description: "A user would return the product. Cannot release. The team would hold the release for this bug." },
-        { value: 3, label: "Serious",   description: "A user would likely not purchase the product. Will show up in reviews. Clearly a noticeable issue." },
-        { value: 2, label: "Annoying",  description: "A pain – users won't like this once they notice it. A moderate number of users won't buy." },
-        { value: 1, label: "Nuisance",  description: "Not a big deal but noticeable. Extremely unlikely to affect sales." }
+        { value: 5, label: "Blocking",  description: "Blocking further progress on the daily build.",                                                                             catMeme: "https://cataas.com/cat/says/HALP!%20Blocking!" },
+        { value: 4, label: "Critical",  description: "A user would return the product. Cannot release. The team would hold the release for this bug.",                            catMeme: "https://cataas.com/cat/says/This%20is%20critical!" },
+        { value: 3, label: "Serious",   description: "A user would likely not purchase the product. Will show up in reviews. Clearly a noticeable issue.",                        catMeme: "https://cataas.com/cat/says/Quite%20serious" },
+        { value: 2, label: "Annoying",  description: "A pain – users won't like this once they notice it. A moderate number of users won't buy.",                                 catMeme: "https://cataas.com/cat/says/So%20annoying" },
+        { value: 1, label: "Nuisance",  description: "Not a big deal but noticeable. Extremely unlikely to affect sales.",                                                        catMeme: "https://cataas.com/cat/says/Just%20a%20nuisance" }
       ]
     }
   ],
